@@ -1,0 +1,421 @@
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 0;
+}
+/* nav */
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 5px;
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+nav .navetc {
+    padding-right: 20px;
+    padding-top: 8px;
+}
+
+nav #moreicon {
+    width: 20px;
+    height: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: rgb(74, 74, 74);
+}
+
+nav #account {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 26px;
+    height: 26px;
+    padding: 3px;
+    margin-right: 12px;
+    background-color: rgb(195, 29, 95);
+    border-radius: 30px; 
+    font-size: 13px;
+}
+
+nav #account a {
+    color: white;
+}
+
+/* logo */
+#mainlogo {
+    margin-top: 111px;
+}
+
+/* search bar */
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#searchbar {
+    display: flex;
+    justify-content: space-between;
+    width: 561px;
+    height: 44px;
+    box-shadow: 1px 1px 6px 0px rgb(196, 196, 196);
+    border-radius: 30px;
+    margin-top: 35px;
+    align-items: center;
+}
+
+#searchbar #searchicon {
+    width: 30px;
+    height: 23px;
+    padding: 1px 11px 1px 11px;
+}
+
+#searchbar #voiceicon {
+    width: 33px;
+    height: 30px;
+    padding: 1px 11px 1px 11px;
+}
+
+#searchbar #searchinput {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+#searchbar input {
+    border: 0;
+    font-size: 15px;
+    width: 100%;
+}
+
+#searchbar input::placeholder {
+    outline: none;
+}
+
+#searchbar input:focus {
+    outline: none;
+}
+
+@media (max-width:670px) {
+#searchbar {
+    width: 449px;
+}
+}
+
+@media (max-width:560px) {
+#searchbar {
+    width: 337px;
+}
+}
+
+/* shortcut*/
+
+#shortcut {
+    display: flex;
+    flex-direction: row;
+    padding-top: 15px;
+    justify-content: space-around;
+    width: 461px;
+}
+
+@media (max-width:560px) {
+    #shortcut {
+        width: 237px;
+    }
+}
+
+#shortcut .content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    width: 112px;
+    height: 112px;
+    order: 1;
+}
+
+#shortcut #shortcutAddBtn {
+    order: 2;
+}
+
+#shortcut .content:hover {
+    background-color: rgb(231, 231, 231);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#shortcut .content a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-decoration: none;
+    color: black;
+}
+
+#shortcut .content .iconcircle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(243, 243, 243);
+    border-radius: 30px;
+    margin-bottom: 10px;
+}
+
+#shortcut div img {
+    width: 25px;
+    height: 25px;
+}
+
+#shortcut .content .shortcutDeleteBtn {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#shortcut .content .shortcutDeleteBtn:hover {
+    background-color: rgb(206, 206, 206);
+    transition: background-color 0s ease 0s;
+}
+
+
+/* shortcut add */
+
+#shortcutAddBack {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(37, 37, 37);
+    opacity: 0.7;
+}
+
+#shortcutAddWrap {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width:512px) {
+    #shortcutAddWrap {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-height:267px) {
+    #shortcutAddWrap {
+        align-items: flex-start;
+    }
+}
+
+#shortcutAddWrap dialog {
+    padding: 0;
+    border-radius: 7px;
+    border: 0;
+    box-shadow: 0px 0px 15px 0px rgb(46, 46, 46);
+}
+
+#shortcutAddWrap dialog::backdrop {
+    background-color: rgb(94, 94, 94);
+}
+
+#shortcutAdd {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 512px;
+    height: 267px;
+    background-color: white;
+    text-align: left;
+}
+
+#shortcutAdd #title {
+    padding: 20px 20px 16px 20px;
+    margin: 0;
+    height: 15px;
+}
+
+#shortcutAdd #name {
+    padding: 0px 20px 0px 20px;
+    height: 74px;
+}
+
+#shortcutAdd #name #nametext {
+    position: relative;
+    font-size: 10px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    height: 10px;
+    top: -32px;
+}
+
+#shortcutAdd #name input, #shortcutAdd #url input {
+    position: relative;
+    top: 18px;
+    width: 456px;
+    padding: 6px 8px 6px 8px;
+    height: 16px;
+    border: 0;
+    background-color: rgb(241, 241, 241);
+    border-radius: 4px;
+}
+
+#shortcutAdd #name input::placeholder{
+    outline: none;
+}
+
+#shortcutAdd #name input:focus {
+    outline: none;
+    box-sizing: border-box;
+    height: 28px;
+    width: 472px;
+}
+
+#shortcutAdd #name input + .inputbar {
+    position: relative;
+    bottom: -16px;
+    left: 50%;
+    height: 2px;
+    width: 100%;
+    transform: translateX(-50%) scale(0);
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    background-color: rgb(29, 119, 255);
+    transition: 0.2s;
+}
+
+#shortcutAdd #name input:focus + .inputbar {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+}
+
+#shortcutAdd #name input:focus ~ #nametext{
+    color: rgb(29, 119, 255);
+}
+
+#shortcutAdd #url {
+    padding: 0px 20px 0px 20px;
+    height: 74px;
+}
+
+#shortcutAdd #url #urltext {
+    position: relative;
+    font-size: 10px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    height: 10px;
+    top: -32px;
+}
+
+#shortcutAdd #url input::placeholder {
+    outline: none;
+}
+
+#shortcutAdd #url input:focus {
+    outline: none;
+    box-sizing: border-box;
+    height: 28px;
+    width: 472px;
+}
+
+#shortcutAdd #url input + .inputbar {
+    position: relative;
+    bottom: -16px;
+    left: 50%;
+    height: 2px;
+    width: 100%;
+    transform: translateX(-50%) scale(0);
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    background-color: rgb(29, 119, 255);
+    transition: 0.2s;
+}
+
+#shortcutAdd #url input:focus + .inputbar {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+}
+
+#shortcutAdd #url input:focus ~ #urltext{
+    color: rgb(29, 119, 255);
+}
+
+#shortcutAdd #btn {
+    height: 32px;
+    width: 480px;
+    padding: 24px 16px 16px 16px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#shortcutAdd #btn button {
+    display: inline-flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    min-width: 5.14em;
+    border-radius: 4px;
+    border: 0;
+    color: rgb(134, 134, 134);
+    background-color: rgb(241, 241, 241);
+}
+
+#shortcutAdd #btn .cancle-btn {
+    padding: 8px 16px;
+    margin-right: 8px;
+    background-color: white;
+    border: 1px solid rgb(224, 224, 224);
+    color: rgb(29, 119, 255);   
+}
+
+#shortcutAdd #btn .cancle-btn:hover {
+    cursor: pointer;
+    background-color: rgb(248, 248, 248);
+}
+
+#shortcutAdd #btn .action-btn {
+    background-color: rgb(29, 119, 255);
+    color: white;
+}
+
+#shortcutAdd #btn .action-btn:hover {
+    cursor: pointer;
+    background-color: rgb(58, 137, 255);
+    box-shadow: 1px 1px 1px 1px rgba(173, 207, 255, 0.3);
+}
+
+.hidden {
+    visibility: hidden;
+}
