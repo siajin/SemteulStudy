@@ -1,6 +1,6 @@
 # SemteulStudy
 <h3>FRONT</h3>
-김혜주, 이수연
+김혜주 이수연
 <br>
 <br>
 <h3>BACK</h3>
