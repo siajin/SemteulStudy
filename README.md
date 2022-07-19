@@ -1,10 +1,10 @@
 # SemteulStudy
 <h3>FRONT</h3>
-김혜주 이수연
+김동하
 <br>
 <br>
 <h3>BACK</h3>
-시아진 김동하
+김동하
 
 <br>
 <br>
