@@ -1,10 +1,10 @@
 # SemteulStudy
 <h3>FRONT</h3>
-김동하
+dongpal
 <br>
 <br>
 <h3>BACK</h3>
-김동하
+dongpal
 
 <br>
 <br>
