@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div class="navetc"><a href="">Gmail</a></div>
+        <div class="navetc"><a href="">이미지</a></div>
+        <div class="navetc"><a href=""><img id="moreicon" src="src/moreicon.png" alt=""></a></div>
+        <div id="account"><a href="">아진</a></div>
+    </nav>
+    <main>
+        <div id="mainlogo"><a href="https://www.google.co.kr/"><img src="./src/Google_2015_logo.svg" alt="google"></a></div>
+        <div id="searchbar">
+            <div ><img id="searchicon" src="./src/searchicon.png" alt=""></div>
+            <div id="searchinput"><input type="search" placeholder="Google 검색 또는 URL 입력"></div>
+            <div><img id="voiceicon" src="./src/voiceicon.png" alt=""></div>
+        </div>
+        <div id="shortcut">
+            <div class="content" id="shortcutAddBtn"><div class="iconcircle"><img src="src/plus.png" alt=""></div>바로가기 추가</div>
+            <div class="content" onmouseenter="shortcutDeleteBtnVisible(event);" onmouseleave="shortcutDeleteBtnUnvisible(event);"><div class="shortcutDeleteBtn hidden" onmouseenter="shortcutDeleteBtnBack(event);">X</div><a href="https://chrome.google.com/webstore/category/extensions?hl=ko"><div class="iconcircle"><img src="src/playstore.png" alt=""></div><span>웹 스토어</span></a></div>
+            <div class="content" onmouseenter="shortcutDeleteBtnVisible(event);" onmouseleave="shortcutDeleteBtnUnvisible(event);"><div class="shortcutDeleteBtn hidden">X</div><a href="https://www.naver.com/"><div class="iconcircle"><img src="src/naver.png" alt=""></div><span>네이버</span></a></div>
+            <div class="content" onmouseenter="shortcutDeleteBtnVisible(event);" onmouseleave="shortcutDeleteBtnUnvisible(event);"><div class="shortcutDeleteBtn hidden">X</div><a href="https://www.acmicpc.net/"><div class="iconcircle"><img src="src/baekjoon.png" alt=""></div><span>BaekJoon</span></a></div>
+        </div>
+    </main>
+    <div id="shortcutAddWrap" class="hidden">
+        <dialog>
+            <form action="" method="dialog" id="shortcutAddForm">
+                <div id="shortcutAdd">
+                    <div id="title">바로가기 추가</div>
+                    <div id="name">
+                        <input type="text">
+                        <div class="inputbar"></div>
+                        <div id="nametext">이름</div>
+                    </div>
+                    <div id="url">
+                        <input type="text">
+                        <div class="inputbar"></div>
+                        <div id="urltext">URL</div>
+                    </div>
+                    <div id="btn">
+                        <button class="cancle-btn">취소</button>
+                        <button disabled="true">완료</button>
+                        <div class="inputbar"></div>
+                    </div>
+
+                </div>
+            </form>
+
+        </dialog>
+    </div>
+</body>
+<script src="home.js"></script>
+</html>

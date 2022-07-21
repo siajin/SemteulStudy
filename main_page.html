@@ -2,9 +2,57 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>DayMonth</title>
+    <link rel="stylesheet" href="main_page.css">
   </head>
   <body>
-    hello
+    <div class="container">
+      <div class="nav">
+        <div class="searchBar">
+          <div class="searchIcon"><img id="magni" src="C:\Users\sueel\OneDrive\학교\PROJECT\셈틀제\google_main_page\google_magnifying.jpg" alt="magnifying ">
+          </div>
+          <input id="search" type="text" onkeyup="enterSearch(event);" placeholder="Search for events" style="color: #7B68EE">
+        </div>
+        <div class="transition">
+          <div>To-Do</div>
+          <div>Reposi</div>
+        </div>
+      </div>
+      <div class="todayToDo">
+        <div id="TodoTitle">Today's To-Do List</div>
+        <div></div>
+      </div>
+      <div class="calendar">
+        <div class="sec_cal">
+          <div class="cal_nav">
+            <a href="javascript:;" class="nav-btn go-prev">prev</a>
+            <div class="year-month"></div>
+            <a href="javascript:;" class="nav-btn go-next">next</a>
+          </div>
+          <div class="cal_wrap">
+            <div class="days">
+              <div class="day">MON</div>
+              <div class="day">TUE</div>
+              <div class="day">WED</div>
+              <div class="day">THU</div>
+              <div class="day">FRI</div>
+              <div class="day">SAT</div>
+              <div class="day">SUN</div>
+            </div>
+            <div class="dates"></div>
+          </div>
+        </div>
+      </div>
+      <div class="chooseDailyCategory">
+        <div class="chooseButton">
+          <div id="daily">Daily</div>
+          <div id="category">Category</div>
+        </div>
+      </div>
+    </div>
+
+
   </body>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="main_page.js" charset="utf-8"></script>
 </html>
