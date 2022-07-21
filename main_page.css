@@ -1,40 +1,45 @@
 html, body{
   width: 100%;
   height: 100%;
+  margin: 0;
 }
-
+a{
+  text-decoration: none;
+}
 .container{
   height: 100%;
   display: grid;
   grid-template-areas:
-    "nav nav"
-    "calendar todayToDo"
-    "calendar chooseDailyCategory";
-  grid-template-columns: 480px 1fr;
-  grid-template-rows: 40px 1fr 150px;
+    "nav todayToDo sideBar"
+    "calendar todayToDo sideBar";
+  grid-template-columns: minmax(400px, 800px) minmax(0px, 400px) minmax(0px, 300px);
+  grid-template-rows: 60px 1fr;
+
 }
 .nav{
-  padding: 20px 15px 20px 40px;
-  height: 40px;
   grid-area: nav;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-.searchBar{
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
-  border-style: solid;
-  border-radius: 15px;
-  border-color: #7B68EE;
-  border-width: 2px;
+}
+.searchBar{
+  width: 100%;
+  height: 60%;
+  min-width: 200px;
+  max-width: 450px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  border-radius: 3px;
+  box-shadow: 0px 0px 5px #7B68EE;
 }
 #search{
   border: 0;
-  width: 430px;
+
   margin-left: 10px;
 }
 ::placeholder{
@@ -52,58 +57,63 @@ html, body{
 #search:focus {
   outline: 0;
 }
-.transition{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  width: 100px;
-  height: 30px;
-  background-color: #7B68EE;
-  border-radius: 15px;
-}
-.transition div{
-  width: 40px;
-  height: 20px;
-  background-color: white;
-  border-radius: 30px;
-  font-size: 7px;
-  text-align: center;
-  display: table-cell;
-  vertical-align: middle;
-  color: #7B68EE;
-  font-weight: 500;
-}
+
 /*오른쪽 사이드바1*/
 .todayToDo{
   grid-area: todayToDo;
   max-width: 400px;
-  margin: 60px 20px 0px 0px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  border-radius: 30px;
+  background: linear-gradient(to bottom, #7B68EE, rgb(178, 160, 255));
+  box-shadow: 0px 0px 20px #7B68EE;
 
 }
 #TodoTitle{
-  color: #7B68EE;
-  border-style: solid;
-  border-color: #7B68EE;
-  font-size: 22px;
+  color: white;
+  /*border-style: solid;
+  border-color: #7B68EE;*/
+  font-size: 40px;
   height: 60px;
   border-radius: 30px;
+  text-overflow: ellipsis;
+  overflow: hidden;
 
 }
+.todayToDoList{
+  display: flex;
+  flex-direction: column;
+  text-overflow: ellipsis;
+  overflow: hidden;
 
+
+}
+.todayToDoList div{
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.todayToDoList a{
+  color: white;
+  line-height: 10px;
+}
+
+/*왼사이드바*/
+.sideBar{
+  grid-area: sideBar;
+  background-color: white;
+}
 
 /*메인 섹션*/
 .calendar{
   grid-area: calendar;
-  margin: 60px 40px 40px 40px;
-  border-style: solid;
+  background-color: white;
+  margin: 40px 60px 40px 40px;
+  /*border-style: solid;
   border-radius: 40px;
   border-color: #7B68EE;
-  border-width: 2px;
+  border-width: 2px;*/
 }
 .sec_cal {
     width: 100%;
@@ -112,6 +122,7 @@ html, body{
 }
 
 .sec_cal .cal_nav {
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -189,6 +200,7 @@ html, body{
     align-items: center;
     justify-content: center;
     width: calc(100% / 7);
+    height: calc(100% / 7);
     text-align: left;
     color: #999;
     font-size: 12px;
@@ -214,33 +226,4 @@ html, body{
 
 .sec_cal .cal_wrap .day.disable {
     color: #ddd;
-}
-
-/*오른쪽 사이드바2*/
-.chooseDailyCategory{
-  grid-area: chooseDailyCategory;
-  padding: 60px 20px 40px 20px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-}
-.chooseButton{
-  height: 100px;
-  border-radius: 60px;
-  width: 100%;
-  max-width: 300px;
-  min-width: 150px;
-  background-color: #7B68EE;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-.chooseButton div{
-  height: 80px;
-  width: 100%;
-  max-width: 100px;
-  min-width: 40px;
-  font-size: 30px;
-  color: white;
 }
