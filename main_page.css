@@ -1,115 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@500&display=swap');
+
 html, body{
   width: 100%;
   height: 100%;
   margin: 0;
+  font-family: 'IBM Plex Sans KR', sans-serif;
+  background-color: #F7F5FD;
 }
 a{
   text-decoration: none;
 }
-.container{
+#container{
   height: 100%;
   display: grid;
   grid-template-areas:
-    "nav todayToDo sideBar"
-    "calendar todayToDo sideBar";
-  grid-template-columns: minmax(400px, 800px) minmax(0px, 400px) minmax(0px, 300px);
+    "nav nav"
+    "calendar todayToDo";
+  grid-template-columns: 900px 280px;
   grid-template-rows: 60px 1fr;
 
 }
-.nav{
+#nav{
   grid-area: nav;
-  width: 100%;
-  height: 100%;
+  height: 60px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
-.searchBar{
-  width: 100%;
-  height: 60%;
-  min-width: 200px;
-  max-width: 450px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
 
-  border-radius: 3px;
-  box-shadow: 0px 0px 5px #7B68EE;
+#mainLogo {
+  font-size: 23px;
+  margin-left: 40px;
+  margin-right: 25px;
 }
+
+#searchBar{
+  width: 470px;
+  height: 35px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: 0px 0px 4px 2px rgb(233, 233, 233);
+  background-color: white;
+}
+
 #search{
   border: 0;
-
+  width: 320px;
   margin-left: 10px;
 }
-::placeholder{
+
+#search::placeholder{
   color: #7B68EE;
   font-size: 15px;
 }
-.searchIcon{
+
+#search:focus {
+  outline: 0;
+}
+
+#searchIcon{
   margin-left: 12px;
 }
+
 #magni{
   object-fit: contain;
   width: 100%;
   height:20px;
 }
-#search:focus {
-  outline: 0;
-}
 
-/*오른쪽 사이드바1*/
+
+/* to-do */
 .todayToDo{
   grid-area: todayToDo;
-  max-width: 400px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  background: linear-gradient(to bottom, #7B68EE, rgb(178, 160, 255));
-  box-shadow: 0px 0px 20px #7B68EE;
 
 }
 #TodoTitle{
-  color: white;
-  /*border-style: solid;
-  border-color: #7B68EE;*/
-  font-size: 40px;
-  height: 60px;
-  border-radius: 30px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-
+  font-size: 20px;
+  margin-left: 8px;
 }
 .todayToDoList{
   display: flex;
   flex-direction: column;
-  text-overflow: ellipsis;
   overflow: hidden;
-
-
 }
+
 .todayToDoList div{
   height: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
 .todayToDoList a{
-  color: white;
-  line-height: 10px;
+  color: black;
 }
 
-/*왼사이드바*/
-.sideBar{
-  grid-area: sideBar;
-  background-color: white;
-}
 
-/*메인 섹션*/
+/* 캘린더 */
 .calendar{
   grid-area: calendar;
   background-color: white;
-  margin: 40px 60px 40px 40px;
+  margin: 10px 60px 40px 40px;
+  box-shadow: 0px 0px 10px 2px rgb(237 237 237);
   /*border-style: solid;
   border-radius: 40px;
   border-color: #7B68EE;
@@ -121,8 +118,17 @@ a{
     font-family: "NotoSansR";
 }
 
+.sec_cal .year {
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 28px;
+  color: #989898;
+}
+
 .sec_cal .cal_nav {
-    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -131,8 +137,7 @@ a{
     line-height: 20%;
 }
 
-.sec_cal .cal_nav .year-month {
-    width: 80%;
+.sec_cal .cal_nav .month {
     text-align: center;
     line-height: 1;
 }
@@ -179,16 +184,13 @@ a{
 }
 
 .sec_cal .cal_wrap {
-    padding-top: 40px;
     position: relative;
     margin: 0 auto;
 }
 
 .sec_cal .cal_wrap .days {
     display: flex;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #ddd;
+
 }
 
 .sec_cal .cal_wrap::after {
@@ -200,7 +202,7 @@ a{
     align-items: center;
     justify-content: center;
     width: calc(100% / 7);
-    height: calc(100% / 7);
+    height: calc(350px / 7);
     text-align: left;
     color: #999;
     font-size: 12px;
@@ -208,12 +210,14 @@ a{
     border-radius:5px
 }
 
-.current.today {background: rgb(242 242 242);}
+.current.today {
+  background: rgb(242 242 242);
+}
 
 .sec_cal .cal_wrap .dates {
     display: flex;
     flex-flow: wrap;
-    height: 70%;
+    height: 90px;
 }
 
 .sec_cal .cal_wrap .day:nth-child(7n -1) {

@@ -1,4 +1,3 @@
-console.log("실행됨1");
 $(document).ready(function() {
     calendarInit();
 });
@@ -9,6 +8,7 @@ $(document).ready(function() {
     금월 마지막일 날짜와 요일
     전월 마지막일 날짜와 요일
 */
+const monthEng = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
 function calendarInit() {
 
@@ -25,9 +25,6 @@ function calendarInit() {
     var currentYear = thisMonth.getFullYear(); // 달력에서 표기하는 연
     var currentMonth = thisMonth.getMonth(); // 달력에서 표기하는 월
     var currentDate = thisMonth.getDate(); // 달력에서 표기하는 일
-
-    // kst 기준 현재시간
-    // console.log(thisMonth);
 
     // 캘린더 렌더링
     renderCalender(thisMonth);
@@ -49,10 +46,10 @@ function calendarInit() {
         var nextDate = endDay.getDate();
         var nextDay = endDay.getDay();
 
-        // console.log(prevDate, prevDay, nextDate, nextDay);
-
+        // 현재 연 표기
+        $('.year').text(currentYear);
         // 현재 월 표기
-        $('.year-month').text(currentYear + '.' + (currentMonth + 1));
+        $('.month').text(monthEng[currentMonth]);
 
         // 렌더링 html 요소 생성
         calendar = document.querySelector('.dates')
@@ -76,8 +73,6 @@ function calendarInit() {
 
         // ...중략...
 
-        // 현재 월 표기
-        $('.year-month').text(currentYear + '.' + (currentMonth + 1));
         // 오늘 날짜 표기
         if (today.getMonth() == currentMonth) {
             todayDate = today.getDate();
