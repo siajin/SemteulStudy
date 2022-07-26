@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>react2</title>
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+
+    </div>
+</body>
+<script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" ></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+    function App() {
+        const [color, setColor] = React.useState("color");
+        const colorChange = (event) => setColor(event.target.value);
+        return (
+            <div>
+                <div id="color" 
+                    style={{
+                        width: "100px",
+                        height: "100px",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        backgroundColor: color,
+                    }}
+                >
+                    {color}
+                </div>
+                <input type="color" name="" id="colorInput" value={color} onChange={colorChange} />
+            </div>
+        );
+    }
+    const root = document.getElementById('root');
+    ReactDOM.render(<App />, root);
+</script>
+</html>
