@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="calender.css">
+</head>
+<body> 
+    <div id="root">
+
+    </div>
+</body>
+<script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" ></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+    function Calender({ today }) {
+        const [year, setYear] = React.useState(today.year);
+        const [month, setMonth] = React.useState(today.month);
+
+        function prev_mon() {
+            if (month <= 1) {
+                setMonth(12);
+            }
+            else {
+                setMonth(month-1);
+            }
+        }
+        function next_mon() {
+            if (month >= 12) {
+                setMonth(1);
+            }
+            else {
+               setMonth(month+1); 
+            }
+        }
+        
+        const totalDate = new Date(year, month, 0).getDate();
+        const prevTotalDate = new Date(year, month-1, 0).getDate();
+        const firstDay = new Date(year, month - 1, 1).getDay();
+        const days = [];
+        for (let i=prevTotalDate-firstDay+1; i<=prevTotalDate; i++) {
+            days.push([i, false]);
+        }
+        for (let i=1; i<=totalDate; i++) {
+            days.push([i, true]);
+        }
+        for (let i=1; i<=42-(totalDate+firstDay); i++) {
+            days.push([i, false]);
+        }
+
+        return (
+            <div className="main_cal">
+                <div className="mon_cal">
+                    <div onClick={prev_mon}>prev</div>
+                    <p>{month}</p> 
+                    <div onClick={next_mon}>next</div>
+                </div>
+                <div className="days_cal">
+                    <div className="day">일</div>
+                    <div className="day">월</div>
+                    <div className="day">화</div>
+                    <div className="day">수</div>
+                    <div className="day">목</div>
+                    <div className="day">금</div>
+                    <div className="day">토</div>
+                    {days.map((date, index) => (
+                        <div className={"day " + (date[1] ? "selectedMon" : "otherMon")} key={index}>{date[0]}</div>
+                    ))}
+                </div>
+            </div>
+        );
+    }
+    
+    function App() {
+        const today = {
+            year: new Date().getFullYear(), 
+            month: new Date().getMonth() + 1, 
+            date: new Date().getDate(), 
+            day: new Date().getDay(), 
+          };
+        return (
+            <div className="app">
+                <div className="assign_list">
+                    과제
+                </div>
+                <Calender 
+                    today={today}
+                />
+            </div>
+        );
+    }
+    const root = document.getElementById('root');
+    ReactDOM.render(<App />, root);
+</script>
+</html>
