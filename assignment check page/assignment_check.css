@@ -1,0 +1,63 @@
+html, body{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(255, 255, 255);
+}
+/*nav*/
+nav{
+  width: 90%;
+  padding: 20px 30px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav button{rgb(251, 253, 255)
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  font-size: 15px;
+
+  background-color: white;
+
+  border-radius: 5px;
+  border-color: rgb(147, 108, 226);
+  border-width: 3px;
+}
+
+/*section*/
+section{
+  width: 90%;
+  padding: 0px 30px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+section > div{
+  border-radius: 5px;
+  border-style: solid;
+  border-color: rgb(147, 108, 226);
+  border-width: 3px;
+}
+
+section .calendar{
+  width: 600px;
+  height: 600px;
+}
+
+section .assignment_list{
+  width: 300px;
+
+}
+
+section .code_view{
+  width: 400px;
+  height: 400px;
+}
