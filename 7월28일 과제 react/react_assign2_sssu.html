@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>react1</title>
+</head>
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+    }
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+<body>
+    <div id="root">
+
+    </div>
+</body>
+<script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" ></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+    function App() {
+        const [color, setColor] = React.useState("color");
+        const colorChange = (event) => {
+             setColor(event.target.value);
+        };
+    
+        return (
+            <div>
+                <div id = "color" style = {{
+                    height : "300px",
+                    width : "300px", 
+                    display : "flex",
+                    justifyContent : "center",
+                    alignContent: "normal",
+                    backgroundColor : color,
+                }}>
+                    {color}
+                </div>
+                <div>
+                    <input type = "color" id = "colorInput" value = {color} onChange = {colorChange} 
+                    style = {{ width : "300px",
+                    }}/>
+                </div>
+            </div>
+        );
+    }
+    
+    const root = document.getElementById('root');
+    ReactDOM.render(<App />, root)</script>
+</html>
