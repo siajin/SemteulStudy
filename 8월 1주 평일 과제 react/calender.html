@@ -15,8 +15,43 @@
 <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
 <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" ></script>
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
 <script type="text/babel">
-    function Calender({ today }) {
+    function Assign({ today }) {
+        const assign = {
+            name: ["과제1", "과제2"],
+            start: [6, 10],
+            end: [8, 11],
+            count: 2,
+        }
+
+        const assignNameList = [];
+        for (let i=0;i<assign.count;i++) {
+            assignNameList.push(assign.name[i]);
+        }
+
+        function assignPeriod(e) {
+            for (let i=0;i<assign.count;i++) {
+                if (e.target.innerText === assign.name[i]) {
+                    <Calender 
+                    today={today}
+                    selectedDay={[assign.start[i], assign.end[i]]}
+                />
+                }
+            }
+            
+        }
+
+        return (
+            <div className="assign_list">
+                <ul>
+                    {assignNameList.map((name, index) => 
+                        (<li onClick={assignPeriod} key={index}>{name}</li>))}
+                </ul>
+            </div>
+        );
+    }
+    function Calender({ today, selectedDay }) {
         const [year, setYear] = React.useState(today.year);
         const [month, setMonth] = React.useState(today.month);
 
@@ -42,13 +77,28 @@
         const firstDay = new Date(year, month - 1, 1).getDay();
         const days = [];
         for (let i=prevTotalDate-firstDay+1; i<=prevTotalDate; i++) {
-            days.push([i, false]);
+            const date = {
+                day: i,
+                selectedMon: false,
+                selectedDay: (selectedDay[0] <= i <= selectedDay[1]),
+            }
+            days.push(date);
         }
         for (let i=1; i<=totalDate; i++) {
-            days.push([i, true]);
+            const date = {
+                day: i,
+                selectedMon: false,
+                selectedDay: (selectedDay[0] <= i <= selectedDay[1]),
+            }
+            days.push(date);
         }
         for (let i=1; i<=42-(totalDate+firstDay); i++) {
-            days.push([i, false]);
+            const date = {
+                day: i,
+                selectedMon: false,
+                selectedDay: (selectedDay[0] <= i <= selectedDay[1]),
+            }
+            days.push(date);
         }
 
         return (
@@ -67,7 +117,7 @@
                     <div className="day">금</div>
                     <div className="day">토</div>
                     {days.map((date, index) => (
-                        <div className={"day " + (date[1] ? "selectedMon" : "otherMon")} key={index}>{date[0]}</div>
+                        <div className={"day " + (date.selectedMon ? "selectedMon" : "otherMon") + (date.selectedDay ? "selectedDay" : "")} key={index}>{date.day}</div>
                     ))}
                 </div>
             </div>
@@ -83,11 +133,12 @@
           };
         return (
             <div className="app">
-                <div className="assign_list">
-                    과제
-                </div>
+                <Assign
+                    today={today}
+                />
                 <Calender 
                     today={today}
+                    selectedDay={[0, 0]}
                 />
             </div>
         );

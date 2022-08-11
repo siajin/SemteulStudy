@@ -11,21 +11,55 @@ html, body, #root {
 
 .assign_list {
     height: 100%;
-    width: 10%;
     min-width: 100px;
     flex-direction: column;
     background-color: rgb(239, 239, 239);
 }
 
+.assign_list li:hover {
+    cursor: pointer;
+}
+@keyframes showSubmit {
+    0% {transform: translate(100px);}
+    100% {transform: translate(0px);}
+}
+
+@keyframes fadeSubmit {
+    0% {transform: translate(0px);}
+    100% {transform: translate(100px);}
+}
+
+.showSubmit {
+    animation: showSubmit 1s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+}
+
+.fadeSubmit {
+    animation: showSubmit 1s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex: 1;
+}
+
 .main_cal {
-    width: 90%;
-    min-width: 800px;
     display: flex;
     justify-content: center;
     align-items: center;
-
     flex-direction: column;
+    margin: 0 20px;
 }
+
+
+.assign_submit {
+    flex: 1;
+    margin: 20px;
+    background-color: gray;
+}
+
+
 
 .mon_cal {
     height: 50px;
@@ -58,10 +92,15 @@ html, body, #root {
     align-items: center;
 }
 
+.days_cal .day a:hover {
+    cursor: pointer;
+}
+
+.days_cal .selectedAssignDay {
+    color: red !important;   
+}
+
 .days_cal .otherMon {
     color: rgb(146, 146, 146);
 }
 
-.days_cal .selectedDay {
-    color: red;
-}

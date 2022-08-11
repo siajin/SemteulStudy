@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="calender.css">
+</head>
+<body> 
+    <div id="root">
+
+    </div>
+</body>
+<script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+<script type="text/babel">
+    function AssignSubmit({ day }) {
+        const [isShow, setIsShow] = React.useState("");
+        React.useEffect(() => {
+            setIsShow("showSubmit");
+            console.log(isShow);
+            return () => {
+                setTimeout(()=>{
+                    setIsShow("fadeSubmit");
+                }, 400);
+                
+                console.log(isShow);
+            };
+        }, []);
+        return (
+            <div className={"assign_submit " + isShow}>
+                <h1>{day}</h1>
+                <form action="">
+                    <input type="file" name="" id=""/>
+                    <button type="submit">제출</button>
+                </form>
+            </div>
+        );    
+    }
+
+    function Calender({ selectedAssign, assignStart, assignEnd }) {
+        const today = {
+            year: new Date().getFullYear(), 
+            month: new Date().getMonth() + 1, 
+            date: new Date().getDate(), 
+            day: new Date().getDay(), 
+          };
+
+        const [year, setYear] = React.useState(today.year);
+        const [month, setMonth] = React.useState(today.month);
+
+        function prev_mon() {
+            if (month <= 1) setMonth(12);
+            else setMonth(month-1);
+        }
+        function next_mon() {
+            if (month >= 12) setMonth(1);
+            else setMonth(month+1); 
+        }
+
+        const totalDate = new Date(year, month, 0).getDate();
+        const prevTotalDate = new Date(year, month-1, 0).getDate();
+        const firstDay = new Date(year, month - 1, 1).getDay();
+        const days = [];
+
+        for (let i=prevTotalDate-firstDay+1; i<=prevTotalDate; i++) {
+            const date = {
+                day: i,
+                selectedMon: false,
+                selectedAssignDay: 0<=selectedAssign && (assignStart[selectedAssign][0] <= month && month-1 <= assignEnd[selectedAssign][0]) && (assignStart[selectedAssign][1] <= i && i <= assignEnd[selectedAssign][1]) ? true : false,
+                // 0<=selectedAssign 이면 과제가 선택됨, selectedAssign은 과제리스트의 인덱스 역할, assignStart[0]은 월 [1]은 일
+            }
+            days.push(date);
+        }
+        for (let i=1; i<=totalDate; i++) {
+            const date = {
+                day: i,
+                selectedMon: true,
+                selectedAssignDay: 0<=selectedAssign && (assignStart[selectedAssign][0] <= month && month <= assignEnd[selectedAssign][0]) && (assignStart[selectedAssign][1] <= i && i <= assignEnd[selectedAssign][1]) ? true : false,
+            }
+            days.push(date);
+        }
+        for (let i=1; i<=42-(totalDate+firstDay); i++) {
+            const date = {
+                day: i,
+                selectedMon: false,
+                selectedAssignDay: 0<=selectedAssign && (assignStart[selectedAssign][0] <= month && month+1 <= assignEnd[selectedAssign][0]) && (assignStart[selectedAssign][1] <= i && i <= assignEnd[selectedAssign][1]) ? true : false,
+            }
+            days.push(date);
+        }
+
+        const [clickedDay, setClickedDay] = React.useState(-1);
+        function SubmitPage(e) {
+            if (clickedDay === e.target.innerText) setClickedDay(-1);
+            else setClickedDay(e.target.innerText);
+        }
+
+        return (
+            <div className="main">
+                <div className="main_cal">
+                    <div className="mon_cal">
+                        <div onClick={prev_mon}>prev</div>
+                        <p>{month}</p> 
+                        <div onClick={next_mon}>next</div>
+                    </div>
+                    <div className="days_cal">
+                        <div className="day">일</div>
+                        <div className="day">월</div>
+                        <div className="day">화</div>
+                        <div className="day">수</div>
+                        <div className="day">목</div>
+                        <div className="day">금</div>
+                        <div className="day">토</div>
+                        {days.map((date, index) => (
+                            <div className={"day " + 
+                                (date.selectedMon ? "selectedMon " : "otherMon ") + 
+                                (date.selectedAssignDay ? "selectedAssignDay" : "")} 
+                                key={index}>
+                                <a onClick={date.selectedMon ? SubmitPage : null}>{date.day}</a>
+                            </div>
+                        ))}
+                    </div>
+                </div> 
+                {0<=clickedDay ? <AssignSubmit day={clickedDay}/> : null}   
+            </div>
+            
+        );
+    }
+
+    function App() {
+        const [selectedAssign, setSelectedAssign] = React.useState(-1);
+        const assignStart = [[8, 6], [8, 10]];
+        const assignEnd = [[8, 8], [8, 11]];
+        const assignList = ["과제1", "과제2"];
+
+        function assignPeriod(e) {
+            for (let i=0;i<assignList.length;i++) {
+                if (e.target.innerText === assignList[i]) {
+                    if (selectedAssign === i) setSelectedAssign(-1);
+                    else setSelectedAssign(i);
+                }
+            } 
+        }
+
+        return (
+            <div className="app">
+                <div className="assign_list">
+                    <ul>
+                        {assignList.map((title, index) => 
+                            (<li onClick={assignPeriod} key={index}>{title}</li>))}
+                    </ul>
+                </div>
+                <Calender
+                    selectedAssign={selectedAssign}
+                    assignStart={assignStart}
+                    assignEnd={assignEnd}
+                />
+            </div>
+        );
+    }
+    const root = document.getElementById('root');
+    ReactDOM.render(<App />, root);
+</script>
+</html>
