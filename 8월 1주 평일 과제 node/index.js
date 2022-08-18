@@ -1,4 +1,7 @@
 const http = require("http");
+const {odd, even} = require('./var');
+
+console.log(odd, even);
 
 const server = http.createServer((req, res) => {
     const url = req.url;
