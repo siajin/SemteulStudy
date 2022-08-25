@@ -75,8 +75,9 @@ function App() {
             <div className={"assign_submit " + isShowSubmit}>
                 <div className="submit_content">
                     <h1>{day}</h1>
-                    <form action="">
-                        <input type="file"/>
+                    <form action="/siajin" method='post' enctype="multipart/form-data">
+                        <input name="day" type="hidden" value={day} />
+                        <input name="file" type="file"/>
                         <button type="submit">제출</button>
                     </form>
                 </div>

@@ -33,16 +33,17 @@ html, body, #root {
 
 @keyframes fadeSubmit {
     0% {
+        position: fixed;
+        right: 0;
         transform: translate(0px);
         opacity: 100;
-        position: fixed;
-        right: 0;
+        
     }
     100% {
-        transform: translate(300px);
-        opacity: 0;
         position: fixed;
         right: 0;
+        transform: translate(300px);
+        opacity: 0;
     }
 }
 
@@ -51,7 +52,7 @@ html, body, #root {
 }
 
 .fadeSubmit {
-    animation: fadeSubmit 1s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+    animation: fadeSubmit 1s cubic-bezier(0.075, 0.82, 0.165, 1) 0s forwards;
 }
 
 .main {
@@ -93,6 +94,7 @@ html, body, #root {
 
 .assign_submit {
     height: 100%;
+    width: 250px;
 }
 
 .assign_submit .submit_content {
