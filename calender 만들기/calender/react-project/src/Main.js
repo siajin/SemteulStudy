@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import './App.css';
+import './Main.css';
 
-function App() {
+function Main() {
     const [selectedAssign, setSelectedAssign] = useState(-1);
     const assignStart = [[8, 6], [8, 10]];
     const assignEnd = [[8, 8], [8, 11]];
@@ -94,16 +94,36 @@ function App() {
         } 
     }
 
+
+
     return (
-        <div className="app">
+        <div className="app" style={isShowSubmit === "showSubmit" ?
+        {
+            display: 'grid',
+            gridTemplateRows: '50px 1fr',
+            gridTemplateColumns: '100px 1fr 200px',
+            gridTemplateAreas:"'assign_list header submit' 'assign_list main submit'",
+            overflow: 'hidden'
+        } : 
+        {
+            display: 'grid',
+            gridTemplateRows: '50px 1fr',
+            gridTemplateColumns: '100px 1fr',
+            gridTemplateAreas:"'assign_list header' 'assign_list main'",
+            overflow: 'hidden'
+        }}>
             <div className="assign_list">
                 <ul>
                     {assignList.map((title, index) => 
                         (<li onClick={assignPeriod} key={index}>{title}</li>))}
                 </ul>
             </div>
-            <div className="main">
-                <div className={"main_cal " + (isShowSubmit === "none" ? null : (isShowSubmit === "showSubmit" ? "shiftL_cal" : "shiftR_cal"))}>
+            <div className={"header " + (isShowSubmit === "none" ? null : (isShowSubmit === "showSubmit" ? "shiftL_cal" : "shiftR_cal"))}>
+                <a href='/login' className='login'>login</a>
+                <a href='/join' className='join'>join</a>
+            </div>
+            <div className={"main " + (isShowSubmit === "none" ? null : (isShowSubmit === "showSubmit" ? "shiftL_cal" : "shiftR_cal"))}>
+                <div className="main_cal">
                     <div className="mon_cal">
                         <div onClick={prev_mon}>prev</div>
                         <p>{month}</p> 
@@ -133,4 +153,4 @@ function App() {
     );
 }
 
-export default App;
+export default Main;
